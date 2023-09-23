@@ -1,0 +1,49 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+  {% block carousel %}
+    <style type="text/css">
+      .carousel-inner img{
+        object-fit: cover;
+        height: 350px;
+      }
+      .carousel-item:after {
+        content:"";
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+      }
+
+      .darken-image {
+         filter: brightness(35%);
+      }
+    </style>
+
+    <div
+      class="carousel slide"
+      data-bs-interval="{% block carousel_interval %}30000000{% endblock %}"
+      id="carouselControls"
+      data-bs-ride="carousel">
+
+      <div class="carousel-inner">
+        {% block carousel_items %}
+        {% for carousel_item in carousel_items %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <img class="d-block w-100 darken-image" src="{{ carousel_item.image.url }}">
+            <div class="carousel-caption d-none d-md-block">
+              <h1 class="animate__animated animate__fadeInDown" style='margin-bottom:100px;font: 62.5% "Roboto","Arial","Helvetica",sans-serif;font-size: 5em;font-weight: 700;'>{{ carousel_item.title }}</h1>
+              <h3 class="animate__animated animate__zoomIn" style='font: 62.5% "Roboto","Arial","Helvetica",sans-serif;font-size: 1.9em;'>{{ carousel_item.subtitle }}</h3>
+            </div>
+          </div>
+        {% endfor %}
+        {% endblock %}
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block under_carousel %}{% endblock %}
+
+{% endblock %}

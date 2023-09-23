@@ -1,0 +1,56 @@
+{% extends "shop/carousel.html" %}
+
+{% block under_carousel %}
+  <div class="container-fluid">
+    <h2 class="text-center my-5">Категории товаров</h2>
+
+    <div class="row gy-5">
+
+      {% for category in categories %}
+        <div class="col-md-3 col-sm-4 col-6 text-center" style="padding:0 4%;">
+          <div class="position-relative">
+            <img src="{{ category.image.url }}" height="100px"/>
+            <p>{{ category.name }}</p>
+            <a class="stretched-link" href="{{ category.get_absolute_url }}"></a>
+         </div>
+        </div>
+      {% empty %}
+        <h2 class="text-center my-5">No Categories</h2>
+      {% endfor %}
+    </div>
+  </div>
+
+<h2 class="text-center my-5">Новости</h2>
+  {% for n in news %}
+  <dt><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></dt>
+
+
+    {% empty %}
+      <dt>No news now</dt>
+    {% endfor %}
+
+<h2>Наши поставщики</h2>
+
+{% for provider in providers %}
+    <hr>
+    <p><strong>Имя:</strong> {{provider.username}}</p>
+    <p class="text-muted"><strong>Телефон:</strong> {{provider.profile.phone}}</p>
+{% endfor %}
+
+  <h2>Немного про нас!</h2>
+  <h3 style="text-align: center;">Добро пожаловать в Mater Headlight</h3>
+  <p>Маter Headlight - это профессиональная торговая платформа. Здесь мы предоставим вам только качественные аксессуары, которые вам очень понравятся.
+Мы стремимся предоставить вам лучшие услуги, уделяя особое внимание надежности и деталям автомобиля.
+Мы работаем над тем, чтобы превратить нашу страсть к шопингу в быстро развивающийся онлайн-сайт.
+Мы надеемся, что вам понравится наш магазин так же, как нам нравится предлагать их вам.</p>
+<p> Я буду продолжать публиковать более важные посты на своем веб-сайте для всех вас. Пожалуйста, подарите свою поддержку и любовь.</p>
+<p style="font-weight: bold; text-align: center;">Спасибо, Что посетили Наш Сайт<br><br>
+<span style="color: blue; font-size: 16px; font-weight: bold; text-align: center;">Удачи!</span></p>
+{% endblock %}
+
+{% block carousel_interval %}50000000{% endblock %}
+
+<li class="li" data-lazy-load-enabled="1">
+
+
+</li>
