@@ -3,7 +3,7 @@ from django.contrib.auth.views import LogoutView
 from django.views.generic import TemplateView
 from . import views
 from . import forms
-
+from .views import news_detail2, news_detail3, news_detail1
 
 app_name = 'shop'
 
@@ -26,9 +26,14 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(authentication_form=forms.LoginForm), name='login'),
     path('logout/', LogoutView.as_view(next_page='shop:home'), name='logout'),
     path('register/', views.register, name='register'),
+    path("profil/", TemplateView.as_view(template_name="shop/profil.html"), name='profil'),
+  #  path('profil/', views.profil, name='profil'),
     path('weather/', views.weather, name='weather'),
 
-    path('user_profile/<int:pk>/', views.ShowProfilePageView.as_view(), name='user-profile')
+    path('user_profile/<int:pk>/', views.ShowProfilePageView.as_view(), name='user-profile'),
+    # path('news1/', news_detail1, name='news_detail_one'),
+    # path('news2/', news_detail2, name='news_detail_two'),
+    # path('news3/', news_detail3, name='news_detail_three'),
 ]
 
 # Admin overriding

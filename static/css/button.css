@@ -1,0 +1,79 @@
+.btn, [class|="btn"] {
+    --btn-color: white  ;
+    --btn-background: silver;
+    --btn-border-color: silver;
+
+    --btn-hover-color: white;
+    --btn-hover-background: darkgray;
+    --btn-hover-border-color: darkgray;
+
+    --btn-active-color: white;
+    --btn-active-background: gray;
+    --btn-active-border-color: gray;
+
+    color: var(--btn-color);
+    background-color: var(--btn-background);
+    border: 1px solid var(--btn-border-color);
+    border-radius: 0.5rem;
+
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    cursor: pointer;
+}
+
+.btn, [class|="btn"]:hover {
+    color: var(--btn-hover-color);
+    background-color: var(--btn-hover-background);
+    border-color: var(--btn-hover-border-color);
+}
+
+.btn, [class|="btn"]:active {
+    color: var(--btn-active-color);
+    background-color: var(--btn-active-background);
+    border-color: var(--btn-active-border-color);
+}
+
+
+[type="button"]:disabled,
+[type="submit"]:disabled,
+button:disabled {
+    cursor: default !important;
+
+    color: black !important;
+    background-color: lightslategrey !important;
+    border-color: lightslategrey !important;
+}
+
+[class|="btn"][class*="green"] {
+    --btn-background: #198754;
+    --btn-border-color: #198754;
+
+    --btn-hover-background: #188050;
+    --btn-hover-border-color: #188050;
+
+    --btn-active-background: #177040;
+    --btn-active-border-color: #177040;
+}
+
+[class|="btn"][class*="yellow"] {
+    --btn-background: #FFC107;
+    --btn-border-color: #FFC107;
+
+    --btn-hover-background: #EDAE03;
+    --btn-hover-border-color: #EDAE03;
+
+    --btn-active-background: #D9A000;
+    --btn-active-border-color: #D9A000;
+}
+
+
+[class|="btn"][class*="outline"] {
+    --btn-color: var(--btn-border-color);
+    --btn-background: transparent;
+
+    --btn-hover-color: black;
+    --btn-active-color: black;
+}

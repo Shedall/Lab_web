@@ -166,6 +166,23 @@
     Video cannot be displayed
 </video>
 
-<img src="{% static '/shop/images/certificate.png' %}" height="1000px">
+<audio autoplay controls id="awesome_music" muted
+       src="{% static '/shop/audio/expic_music.mp3' %}" >
+</audio>
+
+<figure>
+    <img src="{% static '/shop/images/certificate.png' %}" height="1000px">
+    <figcaption>
+        <a href="{% static '/shop/images/certificate.png' %}" download>
+            Download
+        </a>
+    </figcaption>
+</figure>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/23Qy3pPOqTo?autoplay=1"
+          frameborder="0" allowfullscreen title="Video">
+    </iframe>
+
+
 
 {% endblock %}

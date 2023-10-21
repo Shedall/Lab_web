@@ -1,0 +1,191 @@
+/* Выделить первую букву (или строку) текста абзаца в статье */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+SC:wght@200;300;400&family=Playfair+Display&family=Raleway:wght@100;300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300&display=swap');
+
+body
+{
+    background: #d7dbd8;
+}
+
+.profil
+{
+    margin:100px;
+    font-family: 'Noto Serif SC', 'Playfair Display', serif;
+}
+
+.profil h1
+{
+     font-family: 'Playfair Display', serif;
+     font-weight:900;
+     text-shadow: 0 0 10px #bcc95f;
+}
+
+.profil-end
+{
+    margin:100px;
+}
+
+.profil p {
+    font-size:23px;
+
+}
+
+.profil p.first-letter-styling::first-letter {
+    font-size:26px;
+    color: red;
+}
+
+/* Добавить контекст в начале и конце фрагмента текста */
+.profil p.context-styling::before {
+    content: "Context: ";
+    font-weight: bold;
+    color:red;
+}
+.profil p.context-styling::after {
+    content: " End of Context";
+    font-weight: bold;
+    color:green;
+}
+
+/* Один из списков оформить маркерами – символами юникода */
+
+.profil ul.list-styling {
+    list-style-type: square;
+    font-size:20px;
+}
+
+.profil ul.list-styling li:nth-child(odd) {
+    background:#b0b58d;
+}
+
+.profil ul.list-styling li:first-child {
+    background:#c78b87;
+}
+
+.profil ul.list-styling li:last-child {
+    background:#6e6565;
+}
+
+
+/* Изменять стиль при выделении текста */
+
+.profil p.text-highlight {
+    font-size:25px;
+}
+
+.profil p.text-highlight::selection {
+    background-color: yellow;
+    color: black;
+}
+
+/* Оформление для цитат */
+.profil q:lang(en) {
+    quotes: "\201C" "\201D";
+    background-color: #f2f2f2;
+    border-left: 5px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.profil q:lang(ru) {
+    quotes: "\201E" "\201C";
+    background-color: #f2f2f2;
+    border: thick dotted #967977;
+
+    bprder-thin:
+    color:gre;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.profil-end .text-fragment {
+    width: 420px; /* Ширина контейнера, например, 80% ширины родительского элемента */
+    /* Максимальная ширина контейнера в пикселях */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
+    padding: 20px; /* Внутренние отступы контейнера */
+}
+
+
+.profil-end .text-fragment p {
+
+    text-transform: uppercase; /* Преобразование текста в заглавные буквы */
+    text-indent: 2em; /* Красная строка */
+    line-height: 1.5; /* Межстрочный интервал */
+    font-variant: small-caps; /* Использование капительных букв */
+    letter-spacing: 1px; /* Интервал между символами */
+    word-wrap:break-word;
+    word-spacing: 2px; /* Интервал между словами */
+    text-align: justify; /* Выравнивание текста по ширине */
+    position: relative; /* Позиционирование блоков для расположения на странице */
+}
+
+
+
+
+.company-name
+{
+    font-family: 'Playpen Sans', cursive;
+    font-kerning:normal;
+    font-size:34px;
+    text-align:center;
+}
+
+
+.profil-end table {
+  border-collapse: collapse; /* Убираем двойные линии между ячейками */
+  width: 100%; /* Занимает 100% ширины контейнера */
+  margin-top: 20px; /* Отступ сверху */
+  border: 2px solid #000; /* Граница вокруг таблицы */
+}
+
+.profil-end table caption {
+  background: #d7dbd8; /* Цвет фона заголовка */
+  font-size:23px;
+  padding: 10px; /* Внутренние отступы для заголовка */
+  text-align: center; /* Горизонтальное выравнивание заголовка по центру */
+  font-weight: bold; /* Жирный шрифт для заголовка */
+}
+
+.profil-end table th {
+  background-color: #9198b3; /* Фон заголовков таблицы */
+  text-transform: uppercase; /* Преобразование текста в заглавные буквы */
+  text-align: center; /* Выравнивание по центру */
+  vertical-align: middle; /* Вертикальное выравнивание по середине */
+  font-weight: bold; /* Жирный текст */
+}
+
+
+
+.profil-end table th em {
+  font-weight: normal; /* Обычный текст внутри заголовка */
+}
+
+.profil-end table td {
+  text-align: center; /* Выравнивание по центру */
+  vertical-align: middle; /* Вертикальное выравнивание по середине */
+  padding: 10px; /* Внутренние отступы ячеек */
+  background:#91b39d;
+}
+
+.sertificate {
+    background-image: url('/static/shop/images/bg.jpg');
+    background-size: cover; /* Размер фона - занимает всю доступную площадь */
+
+
+    border: 30px solid #40c4c8;
+    border-image: url('/static/shop/images/ornament.png') 20 20 repeat; /* Укажите полный путь к картинке */
+    font-family: Algerian, sans-serif !important;
+    position: relative; /* Чтобы можно было использовать псевдоэлемент */
+}
+
+.sertificate::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(196.82deg, purple, orange);
+    mix-blend-mode: overlay; /* Наложение градиента с прозрачностью */
+}
+

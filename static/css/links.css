@@ -1,0 +1,76 @@
+a.nav-link {
+    color: red;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: red !important;
+    text-decoration: underline !important;
+}
+
+a:active {
+    color: green !important;
+    text-decoration: underline !important;
+}
+
+a:visited {
+    color: black;
+    text-decoration: underline;
+}
+
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 0.5rem;
+    color: blue;
+    text-decoration: none !important;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.nav-link:focus,
+.nav-link:visited {
+    color: rgba(255, 255, 255, 0.55) !important;
+    text-decoration: none !important;
+}
+
+.nav-link:hover{
+    color: red !important;
+    text-decoration: none !important;
+}
+.nav-link:active {
+    color: green !important;
+    text-decoration: none !important;
+}
+
+
+
+
+.text-center img {
+    border-radius: 100px; /* Радиус скругления */
+    border: 3px solid green; /* Параметры рамки */
+    box-shadow: 0 0 7px #666;
+}
+
+
+.category:hover {
+    color: red;
+    transform: scale(1.1);
+}
+.categoryav:hover {
+    color: red;
+    transform: rotate(360);
+}

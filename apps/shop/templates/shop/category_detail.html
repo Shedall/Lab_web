@@ -1,7 +1,7 @@
 {% extends "shop/carousel.html" %}
 
 {% block under_carousel %}
-  <h1>Название: {{ category.name }}</h1>
+  <h1 >Название: {{ category.name }}</h1>
 
   <ul>
   {% for product in category.product_set.all %}
@@ -9,7 +9,7 @@
       <a href="{{ product.get_absolute_url }}">{{ product.name }}</a> ({{product.price}})
     </li>
   {% empty %}
-    <li>There are no products in a shop.</li>
+    <li>нет такого продукта в магазине.</li>
   {% endfor %}
   </ul>
 

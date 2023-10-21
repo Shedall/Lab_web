@@ -1,43 +1,82 @@
 {% extends "shop/carousel.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+
+  <link rel="stylesheet" href="{% static 'css/container_grid.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'shop/css/home_style.css' %}" />
+{% endblock %}
 
 {% block under_carousel %}
-  <div class="container-fluid">
-    <h2 class="text-center my-5">Категории товаров</h2>
+  <ul>
+    <li><a href="#categories">Категории</a></li>
+    <li><a href="#news">Новости</a></li>
+    <li><a href="#partners">Поставщики</a></li>
+    <li><a href="#aboutus">Про Нас </a></li>
+  </ul>
 
-    <div class="row gy-5">
+  <div class="container-fluid">
+    <h2 id="categories" class="text-center my-5">Категории товаров</h2>
+
+     <div class="container-grid c-m-4 c-s-3 c-2 g-m-5 g-3">
 
       {% for category in categories %}
-        <div class="col-md-3 col-sm-4 col-6 text-center" style="padding:0 4%;">
-          <div class="position-relative">
+        <div class="text-center px-1 position-relative category">
             <img src="{{ category.image.url }}" height="100px"/>
             <p>{{ category.name }}</p>
             <a class="stretched-link" href="{{ category.get_absolute_url }}"></a>
-         </div>
         </div>
       {% empty %}
         <h2 class="text-center my-5">No Categories</h2>
       {% endfor %}
     </div>
-  </div>
-
-<h2 class="text-center my-5">Новости</h2>
-  {% for n in news %}
-  <dt><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></dt>
 
 
-    {% empty %}
-      <dt>No news now</dt>
-    {% endfor %}
+<h2 id="news" class="text-center my-5">Новости</h2>
+  <ul class="news_list" >
+      <li>
+        <h2 align="center">Новость 1</h2>
+        <img src="{% static 'shop/images/new1.png' %}" width="100%" height="100%">
+          <p class ="main-p-in-news" style = 'font-size:25px'>Из-за включения в санкционный лист США у «АвтоВАЗа» может сорваться сотрудничество с FAW в части сборки китайских машин под маркой Lada, говорят опрошенные «Газетой.Ru» эксперты. О том, какие китайские автомобили могут все-таки примерить шильдик Lada — в материале «Газеты.Ru».
+Еще в июне этого года «АвтоВАЗ» провел церемонию торжественного старта производства новых кроссоверов Lada X-Cross 5 на бывшем заводе Nissan в Санкт-Петербурге, но в продаже машина так и не появилась. Под названием X-Cross 5 скрывается китайский кроссовер FAW Bestune T77, у которого оригинальный логотип заменен на шильдик Lada.
 
-<h2>Наши поставщики</h2>
+В реализации этого проекта сомневаются опрошенные «Газетой.Ru» эксперты, они полагают, что это стало невозможным из-за включения российского автозавода в санкционные списки Евросоюза и США. В таких условиях организацию сборки на «АвтоВАЗе» готовых китайских автомобилей аналитики называют наиболее сложной задачей, в отличие от закупки отдельных компонентов и агрегатов.<wbr></p>
+          <a href="#">Читать далее</a>
+      </li>
+      <li>
+        <h2 align="center">Новость 2</h2>
+        <img src="{% static 'shop/images/new2.png' %}" width="100%" height="100%">
+          <p class ="main-p-in-news" style = 'font-size:25px'>Из-за включения в санкционный лист США у «АвтоВАЗа» может сорваться сотрудничество с FAW в части сборки китайских машин под маркой Lada, говорят опрошенные «Газетой.Ru» эксперты. О том, какие китайские автомобили могут все-таки примерить шильдик Lada — в материале «Газеты.Ru».
+Еще в июне этого года «АвтоВАЗ» провел церемонию торжественного старта производства новых кроссоверов Lada X-Cross 5 на бывшем заводе Nissan в Санкт-Петербурге, но в продаже машина так и не появилась. Под названием X-Cross 5 скрывается китайский кроссовер FAW Bestune T77, у которого оригинальный логотип заменен на шильдик Lada.
+
+В реализации этого проекта сомневаются опрошенные «Газетой.Ru» эксперты, они полагают, что это стало невозможным из-за включения российского автозавода в санкционные списки Евросоюза и США. В таких условиях организацию сборки на «АвтоВАЗе» готовых китайских автомобилей аналитики называют наиболее сложной задачей, в отличие от закупки отдельных компонентов и агрегатов.<wbr></p>
+          <a href="#">Читать далее</a>
+      </li>
+      <li>
+        <h2 align="center">Новость 3</h2>
+        <img src="{% static 'shop/images/new3.png' %}" width="100%" height="100%">
+          <p class ="main-p-in-news" style = 'font-size:25px'>
+              Из-за включения в санкционный лист США у «АвтоВАЗа» может сорваться сотрудничество с FAW в части сборки китайских машин под маркой Lada, говорят опрошенные «Газетой.Ru» эксперты. О том, какие китайские автомобили могут все-таки примерить шильдик Lada — в материале «Газеты.Ru».
+Еще в июне этого года «АвтоВАЗ» провел церемонию торжественного старта производства новых кроссоверов Lada X-Cross 5 на бывшем заводе Nissan в Санкт-Петербурге, но в продаже машина так и не появилась. Под названием X-Cross 5 скрывается китайский кроссовер FAW Bestune T77, у которого оригинальный логотип заменен на шильдик Lada.
+
+В реализации этого проекта сомневаются опрошенные «Газетой.Ru» эксперты, они полагают, что это стало невозможным из-за включения российского автозавода в санкционные списки Евросоюза и США. В таких условиях организацию сборки на «АвтоВАЗе» готовых китайских автомобилей аналитики называют наиболее сложной задачей, в отличие от закупки отдельных компонентов и агрегатов.<wbr> </p>
+          <a href="#">Читать далее</a>
+      </li>
+</ul>
+
+<h2 id="partners">Наши поставщики</h2>
 
 {% for provider in providers %}
     <hr>
+      <img class="category" src="{{ provider.profile.avatar.url }}" height="47px" width="47px"/>
     <p><strong>Имя:</strong> {{provider.username}}</p>
     <p class="text-muted"><strong>Телефон:</strong> {{provider.profile.phone}}</p>
 {% endfor %}
 
-  <h2>Немного про нас!</h2>
+  <h2 id="aboutus">Немного про нас!</h2>
+      <p class="company-name">Mater Headlight</p>
   <h3 style="text-align: center;">Добро пожаловать в Mater Headlight</h3>
   <p>Маter Headlight - это профессиональная торговая платформа. Здесь мы предоставим вам только качественные аксессуары, которые вам очень понравятся.
 Мы стремимся предоставить вам лучшие услуги, уделяя особое внимание надежности и деталям автомобиля.
@@ -48,7 +87,7 @@
 <span style="color: blue; font-size: 16px; font-weight: bold; text-align: center;">Удачи!</span></p>
 {% endblock %}
 
-{% block carousel_interval %}50000000{% endblock %}
+{% block carousel_interval %}3000{% endblock %}
 
 <li class="li" data-lazy-load-enabled="1">
 

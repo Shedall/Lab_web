@@ -22,37 +22,55 @@ from .models import (
 from .forms import UserProfileCreationForm, RegistrationForm, CreateBuyForm, CreateReviewForm
 
 
-#def get_weather():
-#    appid = '91d45fb3f775b8f850579a41205a2a39'
-#    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
+def get_weather():
+    appid = '91d45fb3f775b8f850579a41205a2a39'
+    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
 
- #   city = 'Minsk'
- #   res = requests.get(url.format(city)).json()
+    city = 'Minsk'
+    res = requests.get(url.format(city)).json()
 
- #   return res["main"]["temp"]
+    return res["main"]["temp"]
+
+
+def news_detail1(request):
+    context = {
+
+        'description': 'Weather now',
+    }
+    return render(request, 'shop/news_detail1.html', context)
+
+
+def news_detail2(request):
+    return render(request, 'shop/news_detail2.html')
+
+
+def news_detail3(request):
+    return render(request, 'shop/news_detail3.html')
 
 def weather(request):
-    api_key = 'b2699cd9821c701dcea937c4eec18321'  # Замените на свой API-ключ
-    city = 'Minsk'  # Замените на город, для которого вы хотите получить погоду
+    # api_key = 'b2699cd9821c701dcea937c4eec18321'  # Замените на свой API-ключ
+    # city = 'Minsk'  # Замените на город, для которого вы хотите получить погоду
+    #
+    # # Формируем запрос к API погоды
+    # url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
+    # response = requests.get(url)
+    #
+    # if response.status_code == 200:
+    #     data = response.json()
+    #     temperature = data['main']['temp']
+    #     description = data['weather'][0]['description']
+    # else:
+    #     temperature = None
+    #     description = 'Unable to fetch weather data'
 
-    # Формируем запрос к API погоды
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        data = response.json()
-        temperature = data['main']['temp']
-        description = data['weather'][0]['description']
-    else:
-        temperature = None
-        description = 'Unable to fetch weather data'
+    temperature = get_weather()
 
     context = {
         'temperature': temperature,
-        'description': description,
+        'description': 'Weather now',
     }
 
-    return render(request, 'weather.html', context)
+    return render(request, 'shop/weather.html', context)
 
 
 def get_bitcoin():
@@ -196,6 +214,11 @@ def register(request):
                 return redirect('shop:home')
         else:
             return render(request, 'shop/register.html', {'form': form})
+
+def profil(request):
+    return render(
+        request,
+        'shop/profil.html')
 
 
 class CategoryDetailView(generic.DetailView):
