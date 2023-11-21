@@ -280,8 +280,8 @@ admin.site.register(Faq)
 
 @admin.register(CarouselItem)
 class CarouselItemAdmin(admin.ModelAdmin):
-    list_display = ('get_image_as_html_image', 'title', 'subtitle')
-    list_editable = ('title', 'subtitle')
+    list_display = ('get_image_as_html_image', 'title', 'subtitle','link')
+    list_editable = ('title', 'subtitle','link')
     ordering = ('title', 'subtitle')
 
     search_fields = ('title', 'subtitle')

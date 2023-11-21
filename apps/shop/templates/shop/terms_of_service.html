@@ -2,19 +2,35 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static '/shop/css/trucks.css' %}" />
+<link rel="stylesheet" href="{% static '/shop/css/term_of_service_style.css' %}" />
 
 <label class="marketing-input-wrapper">
 
 <span class="marketing-label"></span>
+
+
+    <dl id="root">
+  <dt>Пользователь</dt>
+  <dd>
+    Пользователь - лицо, получающее услуги по ремонту автомобилей за денежное вознаграждение.
+  </dd>
+
+  <dt>Сайт</dt>
+  <dd>
+    Сайт - Компания, предоставляющая услуги по ремонту.
+  </dd>
+</dl>
 <textarea
-  rows="210"
+  rows="129"
   cols="199"
+  id="text_id"
   readonly>
 
-Политика конфиденциальности Mater Far.
+Политика конфиденциальности SHEDALL.
 Последнее обновление: 10/09/2023
 
-Эта Политика конфиденциальности описывает, как Mater Headlight ("Сайт", "мы", "нас" или "наш") собирает, использует и раскрывает вашу личную информацию, когда вы посещаете, пользуетесь нашими услугами или совершаете покупку на ("Сайте") или иным образом общаетесь с нами (совместно именуемые "Услуги"). Для целей настоящей Политики конфиденциальности "вы" и "ваш" означают вас как пользователя Услуг, независимо от того, являетесь ли вы клиентом, посетителем веб-сайта или другим физическим лицом, чью информацию мы собрали в соответствии с настоящей Политикой конфиденциальности.
+Эта Политика конфиденциальности описывает, как shedall ("Сайт", "мы", "нас" или "наш") собирает, использует и раскрывает вашу личную информацию, когда вы посещаете, пользуетесь нашими услугами или совершаете покупку на ("Сайте") или иным образом общаетесь с нами (совместно именуемые "Услуги"). Для целей настоящей Политики конфиденциальности "вы" и "ваш" означают вас как пользователя Услуг, независимо от того, являетесь ли вы клиентом, посетителем веб-сайта или другим физическим лицом, чью информацию мы собрали в соответствии с настоящей Политикой конфиденциальности.
 
 Пожалуйста, внимательно прочтите эту Политику конфиденциальности. Используя любую из Служб и получая доступ к ней, вы соглашаетесь на сбор, использование и раскрытие вашей информации, как описано в настоящей Политике конфиденциальности. Если вы не согласны с настоящей политикой конфиденциальности, пожалуйста, не пользуйтесь никакими Сервисами и не получайте к ним доступ.
 
@@ -98,90 +114,156 @@
 Мы не используем и не раскрываем конфиденциальную личную информацию в целях определения ваших характеристик.
 </textarea>
 </label>
+
+<button id="details">Наследование</button>
+
+
+<div>
+  TextColor:
+<input type="color" value="#000000" onchange="
+  var text = document.querySelector('#text_id');
+  text.style.color = this.value;
+"/>
+
+  Background:
+<input type="color" value="#ffffff" onchange="
+  var body = document.body;
+  body.style.background = this.value;
+"/>
+
+  fontSize:
+<input type="number" id="tentacles" name="tentacles" min="10" max="100" onchange="
+  var text = document.querySelector('#text_id');
+  text.style.fontSize = `${this.value}px`
+"/>
+</div>
+
+<button
+  data-tmp="1"
+  data-pi2="1"
+  data-counter="1"
+  onclick="
+  var i = this.dataset.counter;
+
+  this.dataset.tmp *= i / (2 * i + 1);
+  this.dataset.pi2 = +this.dataset.tmp + +this.dataset.pi2;
+  this.dataset.counter++;
+
+  this.innerText = ` π = ${2 * this.dataset.pi2}`;">
+
+  π = 2
+</button>
+
+<div>
+    <style>
+    button {
+      background-color: #777;
+      border: none;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+    input[type="number"] {
+      padding: 5px 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+    #random_table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    #random_table td {
+      border: 1px solid black;
+      text-align: center;
+      vertical-align: middle;
+      padding: 10px;
+      user-select: none;
+    }
+    .selected:nth-child(even) {
+      background-color: #FF5858;
+    }
+    .selected:nth-child(odd) {
+      background-color: #FFE91E;
+    }
+  </style>
+
+
+  <table id="random_table">
+
+  </table>
+
+  <span>
+    <button onclick="addRow()">добавить строку</button>
+    <button onclick="addColumn()">добавить столбец</button>
+    <button onclick="transpose()">транспонировать</button>
+    Ширина:<input type="number" id="width" min="1" max="50" value="1">
+    Высота:<input type="number" id="height" min="1" max="50" value="1">
+    <button onclick="
+    var width = document.querySelector('#width').value;
+    var height = document.querySelector('#height').value;
+
+    createTable(height, width)">создать таблицу</button>
+
+    максимум в ряд:<input type="number" id="maxSelect" min="1" max="50" value="1">
+  </span>
+</div>
+
+
+<span id="trucks">
+  <img src="{% static '/shop/images/truck_left.png' %}" class="truck" id="truck_left" width="100%">
+  <img src="{% static '/shop/images/truck_right.png' %}" class="truck" id="truck_right" width="100%">
+</span>
+
+
+{% load static %}
+
+<article class="article">
+
+  <div class="article__image"></div>
+
+  <div class="article__text">
+    <h1 class="article__title">
+      Сертификат<br>
+      ОДО "shedall"
+    </h1>
+
+    <span class="article__type">Качество проверенно и гарантированно</span>
+  </div>
 </article>
 
-<article translate="yes">
-    <figure>
-        <br />Here are breathtaking poem <br />
-        <article>
-            Eyes of grey -- a sodden quay,<br />
-            Driving rain and falling tears,<br />
-            As the steamer wears to sea<br />
-            In a parting storm of cheers.<br />
-            Sing, for Faith and Hope are high --<br />
-            None so true as you and I --<br />
-            Sing the Lovers' Litany:<wbr />
-            "Love like ours can never die!"<br />
-            <br />
-            Eyes of black -- a throbbing keel,<br />
-            Milky foam to left and right;<br />
-            Whispered converse near the wheel<br />
-            In the brilliant tropic night.<br />
-            Cross that rules the Southern Sky!<br />
 
-            Stars that sweep and wheel and fly,<wbr />
-            Hear the Lovers' Litany:<wbr />
-            Love like ours can never die!"<br />
-            <br />
-            Eyes of brown -- a dusy plain<br />
-            Split and parched with heat of June,<br />
-            Flying hoof and tightened rein,<br />
-            Hearts that beat the old, old tune.<br />
-            Side by side the horses fly,<br />
-            Frame we now the old reply<wbr />
-            Of the Lovers' Litany:<wbr />
-            "Love like ours can never die!"<br />
-            <br />
-            Eyes of blue -- the Simla Hills<br />
-            Silvered with the moonlight hoar;<br />
-            Pleading of the waltz that thrills,<br />
-            Dies and echoes round Benmore.<br />
-            "Mabel," "Officers," "Good-bye,"<br />
-            Glamour, wine, and witchery -<br />
-            On my soul's sincerity,<wbr />
-            "Love like ours can never die!"<br />
-            <br />
-            Maidens of your charity,<br />
-            Pity my most luckless state.<br />
-            Four times Cipid's debtor I --<br />
-            Bankrupt in quadruplicate.<br />
-            Yet, despite this evil case,<br />
-            And a maiden showed me grace,<br />
-            Four-and-forty times would I<br />
-            Sing the Lovers' Litany:<wbr />
-            "Love like ours can never die!"<br />
-        </article>
-        <figcaption>
-            Rudyard Kipling <i>"The Lovers' Litany"</i>
-        </figcaption>
-    </figure>
+<table id="students">
+  <caption><h4>Ученики</h4></caption>
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Класс</th>
+    </tr>
+  </thead>
+
+</table>
+
+<script src="{% static '/shop/js/add_student.js' %}"></script>
+
+<span><input id="name"><input id="surname"><input id="form"><button onclick="addStudents()">Add</button></span>
+
+<span id="repetitions"></span>
+
+
+  <script src="{% static '/shop/js/dectst.js' %}"></script>
+  <script src="{% static '/shop/js/term_of_service.js' %}"></script>
+  <script src="{% static '/shop/js/trucks.js' %}"></script>
+  <script src="{% static '/shop/js/random_table.js' %}"></script>
+  <script src="{% static '/shop/js/detail.js' %}"></script>
+
 
 </article>
 
 {% load static %}
-<video
-   width="360" height="240"
-   src="{% static '/shop/video.mp4' %}"
-       autoplay controls preload="none" muted>
-    Video cannot be displayed
-</video>
 
-<audio autoplay controls id="awesome_music" muted
-       src="{% static '/shop/audio/expic_music.mp3' %}" >
-</audio>
-
-<figure>
-    <img src="{% static '/shop/images/certificate.png' %}" height="1000px">
-    <figcaption>
-        <a href="{% static '/shop/images/certificate.png' %}" download>
-            Download
-        </a>
-    </figcaption>
-</figure>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/23Qy3pPOqTo?autoplay=1"
-          frameborder="0" allowfullscreen title="Video">
-    </iframe>
 
 
 

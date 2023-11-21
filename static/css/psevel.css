@@ -188,4 +188,7 @@ body
     background: linear-gradient(196.82deg, purple, orange);
     mix-blend-mode: overlay; /* Наложение градиента с прозрачностью */
 }
+.MYcontainer {
+    column-count: 3; /* Укажите желаемое количество колонок */
+    column-gap: 20px; /* Расстояние между колонками */ }
 

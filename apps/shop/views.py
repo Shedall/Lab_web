@@ -102,12 +102,14 @@ def home(request):
     carousel_items = CarouselItem.objects.all()
     news = News.objects.all()
     providers = Provider.objects.all()
+    categories_count = len(categories)
 
     return render(request, "shop/home.html", {
         'categories': categories,
         'carousel_items': carousel_items,
         'news': news,
-        'providers': providers
+        'providers': providers,
+        'categories_count': categories_count
     })
 
 

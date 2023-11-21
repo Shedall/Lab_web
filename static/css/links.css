@@ -70,7 +70,14 @@ a:visited {
     color: red;
     transform: scale(1.1);
 }
+
+
+.categoryav img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+
 .categoryav:hover {
-    color: red;
-    transform: rotate(360);
+  transform: rotate(360deg); /* Поворачиваем изображение на 360 градусов при наведении */
 }

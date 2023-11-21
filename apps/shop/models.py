@@ -31,6 +31,8 @@ class Profile(models.Model):
     coupons = models.ManyToManyField('Coupon', help_text="Select a coupon for this user",
                                      blank=True, related_name='users')
 
+    birthday = models.DateField(null=True,editable=False)
+
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -214,12 +216,14 @@ class Faq(models.Model):
 
 
 class CarouselItem(models.Model):
+
     image_key = models.UUIDField(default=uuid.uuid4, editable=False)
 
     image = NamedImageField(upload_to='carousel_items_images',
                             get_filename=model_funcs.get_carousel_item_image_filename, storage=OverwriteCodedStorage())
 
     title = models.CharField(max_length=64, blank=True)
+    link = models.CharField(max_length=64, blank=True)
     subtitle = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
